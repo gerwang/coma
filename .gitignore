@@ -4,4 +4,8 @@ logger.txt
 *.pyc
 *.npy
 
-/data/
+data/
+data
+.idea/
+checkpoints/
+save/
