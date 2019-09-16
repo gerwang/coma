@@ -1,7 +1,7 @@
 test_exp () {
 echo @@@@@@@@@@@@@@@ Testing $1 @@@@@@@@@@@@@@@@@@
-python main.py --mode test --name $1 --data data/$2
-echo Saving results ...
+#python main.py --mode test --name $1 --data data/$2
+#echo Saving results ...
 echo Computing Errors ...
 python computeErrors.py --cnn results/$1_predictions.npy --data data/$2 --nz 8
 echo End of Test $1

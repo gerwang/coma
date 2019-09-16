@@ -101,7 +101,7 @@ class FaceData(object):
 				mesh_vec = mesh_vecs[i*(figsize[0]-1) + j]
 				mesh_mesh = self.vec2mesh(mesh_vec)
 				viewer[i][j].set_dynamic_meshes([mesh_mesh])
-		time.sleep(0.1)    # pause 0.5 seconds
+		# time.sleep(0.01)    # pause 0.5 seconds
 		return 0
 
 	def get_normalized_meshes(self, mesh_paths):

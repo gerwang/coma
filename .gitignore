@@ -4,3 +4,4 @@ logger.txt
 *.pyc
 *.npy
 
+/data/

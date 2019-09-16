@@ -20,5 +20,8 @@ def main():
     print("Preprocessing Expression Cross Validation")
     generateExpressionDataSet(args.data, save_path)
 
+    print('Preprocessing Identity Cross Validation')
+    generateIdentityDataset(args.data, save_path)
+
 if __name__ == '__main__':
     main()
