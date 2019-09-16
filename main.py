@@ -27,14 +27,14 @@ parser.add_argument('--viz', type=int, default=0, help='visualize while test')
 parser.add_argument('--loss', default='l1', help='l1 or l2')
 parser.add_argument('--mesh1', default='m1', help='for mesh interpolation')
 parser.add_argument('--mesh2', default='m1', help='for mesh interpolation')
-
+parser.add_argument('--template', default='data/template.obj', help='template mesh path')
 
 args = parser.parse_args()
 
 np.random.seed(args.seed)
 nz = args.nz
 print("Loading data .. ")
-reference_mesh_file = 'data/template.obj'
+reference_mesh_file = args.template
 facedata = FaceData(nVal=100, train_file=args.data+'/train.npy',
     test_file=args.data+'/test.npy', reference_mesh_file=reference_mesh_file, pca_n_comp=nz)
 
