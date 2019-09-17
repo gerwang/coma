@@ -9,6 +9,10 @@ import argparse
 from facemesh import FaceData
 from opendr.topology import get_vert_connectivity
 import time
+from easydl import select_GPUs
+import os
+
+os.environ['CUDA_VISIBLE_DEVICES'] = ','.join(map(str,select_GPUs(1,0.7,0.3)))
 
 parser = argparse.ArgumentParser(description='Tensorflow Trainer for Convolutional Mesh Autoencoders')
 parser.add_argument('--name', default='bareteeth', help='facial_motion| lfw ')
