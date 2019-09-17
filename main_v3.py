@@ -42,7 +42,7 @@ reference_mesh_file = args.template
 facedata = FaceData(nVal=100, train_file=args.data+'/train.npy',
     test_file=args.data+'/test.npy', reference_mesh_file=reference_mesh_file, pca_n_comp=nz)
 
-ds_factors = [2,4,4,4,4]	# Sampling factor of the mesh at each stage of sampling
+ds_factors = [4,4,4,4,2]	# Sampling factor of the mesh at each stage of sampling
 print("Generating Transform Matrices ..")
 
 # Generates adjecency matrices A, downsampling matrices D, and upsamling matrices U by sampling
@@ -77,7 +77,7 @@ params['unpool']		 = 'poolwT'
 
 # Architecture.
 params['F_0']            = int(X_train.shape[2])  # Number of graph input features.
-params['F']              = [16, 16, 16, 16, 32]  # Number of graph convolutional filters.
+params['F']              = [16, 16, 16, 32, 32]  # Number of graph convolutional filters.
 params['K']              = [6, 6, 6, 6, 6]  # Polynomial orders.
 params['p']              = p #[4, 4, 4, 4]    # Pooling sizes.
 params['nz']              = [nz]  # Output dimensionality of fully connected layers.
