@@ -62,8 +62,10 @@ class FaceData(object):
 		# self.pcaMatrix = np.dot(np.diag(eigenVals), self.pca.components_)
 		print('Vertices normalized')
 
-	def vec2mesh(self, vec):
-		vec = vec.reshape((self.n_vertex, 3))*self.std + self.mean
+	def vec2mesh(self, vec, normalize=True):
+		vec = vec.reshape((self.n_vertex, 3))
+		if normalize:
+			vec = vec*self.std + self.mean
 		return Mesh(v=vec, f=self.reference_mesh.f)
 
 	def show(self, ids):
@@ -95,13 +97,13 @@ class FaceData(object):
 			mesh.write_ply(filename+'-'+str(i).zfill(3)+'.ply')
 		return 0
 
-	def show_mesh(self, viewer, mesh_vecs, figsize):
+	def show_mesh(self, viewer, mesh_vecs, figsize, normalize=True):
 		for i in range(figsize[0]):
 			for j in range(figsize[1]):
 				mesh_vec = mesh_vecs[i*(figsize[0]-1) + j]
-				mesh_mesh = self.vec2mesh(mesh_vec)
+				mesh_mesh = self.vec2mesh(mesh_vec, normalize=normalize)
 				viewer[i][j].set_dynamic_meshes([mesh_mesh])
-		# time.sleep(0.01)    # pause 0.5 seconds
+		time.sleep(0.01)    # pause 0.5 seconds
 		return 0
 
 	def get_normalized_meshes(self, mesh_paths):

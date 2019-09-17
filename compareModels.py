@@ -9,10 +9,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--cnn', default='.', help='path to dataset')
 parser.add_argument('--data', default='allset', help='path to dataset')
 parser.add_argument('--nz', type=int, default=8, help='size of the latent z vector')
+parser.add_argument('--template', default='data/template.obj', help='template path')
 
 opt = parser.parse_args()
 
-reference_mesh_file = 'data/template.obj'
+reference_mesh_file = opt.template
 facedata = FaceData(nVal=1, train_file=opt.data + '/train.npy',
                     test_file=opt.data + '/test.npy', reference_mesh_file=reference_mesh_file, pca_n_comp=int(opt.nz),
                     fitpca=True)
@@ -38,7 +39,7 @@ while (1):
     outmesh[1] = np.reshape(pca_vertices[i], (nv,))
     outmesh[3] = np.reshape(test_vertices[i], (nv,))
 
-    facedata.show_mesh(viewer=viewer, mesh_vecs=outmesh, figsize=(1, 4))
+    facedata.show_mesh(viewer=viewer, mesh_vecs=outmesh, figsize=(1, 4), normalize=False)
     inp = readchar.readchar()
     if inp == "=":
         i = i + 1

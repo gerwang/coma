@@ -54,6 +54,7 @@ parser.add_argument('--cnn', default='/is/ps/shared/aranjan/convFaces/results/ic
 parser.add_argument('--data', default='/is/ps/shared/aranjan/convFaces/data/bareteeth', help='path to dataset')
 parser.add_argument('--nz', type=int, default=8, help='size of the latent z vector')
 parser.add_argument('--save', default='save', help='path to dataset')
+parser.add_argument('--template', default='data/template.obj', help='template obj path')
 
 opt = parser.parse_args()
 
@@ -64,7 +65,7 @@ if not os.path.exists(opt.save):
     os.makedirs(opt.save+'/gt')
     os.makedirs(opt.save+'/plt')
 
-reference_mesh_file = 'data/template.obj'
+reference_mesh_file = opt.template
 facedata = FaceData(nVal=100, train_file=opt.data+'/train.npy',
     test_file=opt.data+'/test.npy', reference_mesh_file=reference_mesh_file, pca_n_comp=opt.nz, fitpca=True)
 nv = facedata.n_vertex*3
