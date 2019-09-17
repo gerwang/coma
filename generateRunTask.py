@@ -1,7 +1,7 @@
 template = 'cd /home/jingwang/Data/git-task/coma ' \
            '&& /home/jingwang/Data/anaconda3/envs/coma/bin/python ' \
            '%s.py --data data/%s --name %s --template data/fw_template.obj' \
-           '--nz %d' \
+           ' --nz %d' \
            ' > results/logs/%s.log 2>&1'
 
 mains = ['main', 'main_v2', 'main_v3', 'main_v4']
