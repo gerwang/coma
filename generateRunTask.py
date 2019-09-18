@@ -5,8 +5,8 @@ template = 'cd /home/jingwang/Data/git-task/coma ' \
            ' > results/logs/%s.log 2>&1'
 
 mains = ['main', 'main_v2', 'main_v3', 'main_v4']
-datasets = ['FW', 'FW_exp']
-nzs = [8, 10, 6]
+datasets = ['FW_140', 'FW_500', 'FW_2000', 'FW_10000']
+nzs = [8]
 with open('tasks.txt', 'w') as f:
     for nz in nzs:
         for main in mains:
